@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HomeScreen, LoginScreen, ProfileScreen, SignUpScreen } from '@screens';
-import { NavigationType, RootStackParamList } from '@types';
+import { RootStackParamList } from '@types';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 const HomeStack = createNativeStackNavigator<RootStackParamList>();
@@ -12,7 +12,12 @@ const AppTab = createBottomTabNavigator();
 export const StackNavigator = () => {
     return (
         <NavigationContainer>
-            <HomeStack.Navigator>
+            <HomeStack.Navigator
+                screenOptions={{
+                    headerShown: false,
+                    animation: 'none',
+                    gestureEnabled: false,
+                }}>
                 <HomeStack.Screen name={routes.login} component={LoginScreen} />
                 <HomeStack.Screen
                     name={routes.signUp}
