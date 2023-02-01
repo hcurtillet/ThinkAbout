@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { Button, routes, TextInput } from '@components';
+import { Button, ErrorMessage, routes, TextInput } from '@components';
 import { FormContainer } from '@styles';
 import { RootScreenNavigationProp } from '@types';
 import styled from 'styled-components';
@@ -10,6 +10,8 @@ import auth from '@react-native-firebase/auth';
 
 export const SignUpForm = () => {
     const navigation = useNavigation<RootScreenNavigationProp>();
+
+    const [errorMessages, setErrorMessages] = React.useState<string>('');
 
     const goToLogin = () => {
         navigation.navigate(routes.login);
@@ -22,7 +24,7 @@ export const SignUpForm = () => {
     }) => {
         const { email, password, password2 } = values;
         if (password !== password2) {
-            Alert.alert('Passwords do not match');
+            setErrorMessages('Passwords do not match');
             return;
         }
         try {
@@ -62,6 +64,9 @@ export const SignUpForm = () => {
                         value={values.password2}
                         label="Password"
                     />
+                    {errorMessages && (
+                        <ErrorMessage errorMessage={errorMessages} />
+                    )}
                     <ButtonContainer>
                         <Button onPress={handleSubmit} title="SignUp" />
                         <Button onPress={goToLogin} title={'Login'}></Button>
