@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>539585934701-01id8epgvbral0d21lqd4v79otnt0uer.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.539585934701-01id8epgvbral0d21lqd4v79otnt0uer</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCx3MZhIYgPfMHqr1Z2mmEijyXAv8cTGI0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>539585934701</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.hcurtillet.ThinkAbout</string>
+	<key>PROJECT_ID</key>
+	<string>thinkabout-37318</string>
+	<key>STORAGE_BUCKET</key>
+	<string>thinkabout-37318.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:539585934701:ios:81a11e4ca80694f4c45664</string>
+</dict>
+</plist>
