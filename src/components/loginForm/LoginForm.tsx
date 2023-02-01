@@ -7,10 +7,12 @@ import { RootScreenNavigationProp } from '@types';
 import { View } from 'react-native';
 import styled from 'styled-components';
 import api from '@api';
+import { useTranslation } from 'react-i18next';
 
 export const LoginForm = () => {
     const navigation = useNavigation<RootScreenNavigationProp>();
-    const [errorMessages, setErrorMessage] = useState<string>('');
+    const { t } = useTranslation();
+    const [errorMessages, setErrorMessage] = useState<string | null>();
 
     const logIn = async (values: { email: string; password: string }) => {
         try {
@@ -23,10 +25,10 @@ export const LoginForm = () => {
         } catch (error: any) {
             console.log(error);
             if (error.code === 'auth/user-not-found') {
-                setErrorMessage('User not found');
+                setErrorMessage(t('authentication.userNotFound'));
             }
             if (error.code === 'auth/wrong-password') {
-                setErrorMessage('Wrong password');
+                setErrorMessage(t('authentication.invalidPassword'));
             }
         }
     };
@@ -39,13 +41,13 @@ export const LoginForm = () => {
             {({ handleChange, handleBlur, handleSubmit, values }) => (
                 <FormContainer>
                     <TextInput
-                        label={'Email'}
+                        label={t('authentication.email')}
                         onChangeText={handleChange('email')}
                         onBlur={handleBlur('email')}
                         value={values.email}
                     />
                     <TextInput
-                        label={'Password'}
+                        label={t('authentication.password')}
                         secureTextEntry={true}
                         onChangeText={handleChange('password')}
                         onBlur={handleBlur('password')}
@@ -55,8 +57,14 @@ export const LoginForm = () => {
                         <ErrorMessage errorMessage={errorMessages} />
                     )}
                     <ButtonContainer>
-                        <Button onPress={handleSubmit} title="Login" />
-                        <Button onPress={goToSignUp} title={'SignUp'}></Button>
+                        <Button
+                            onPress={handleSubmit}
+                            title={t('authentication.login')}
+                        />
+                        <Button
+                            onPress={goToSignUp}
+                            title={t('authentication.signUp')}
+                        />
                     </ButtonContainer>
                 </FormContainer>
             )}

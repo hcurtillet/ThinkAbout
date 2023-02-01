@@ -4,14 +4,17 @@ import { Button, ErrorMessage, routes, TextInput } from '@components';
 import { FormContainer } from '@styles';
 import { RootScreenNavigationProp } from '@types';
 import styled from 'styled-components';
-import { Alert, View } from 'react-native';
+import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
+import { useTranslation } from 'react-i18next';
 
 export const SignUpForm = () => {
     const navigation = useNavigation<RootScreenNavigationProp>();
 
-    const [errorMessages, setErrorMessages] = React.useState<string>('');
+    const { t } = useTranslation();
+
+    const [errorMessages, setErrorMessages] = React.useState<string | null>();
 
     const goToLogin = () => {
         navigation.navigate(routes.login);
@@ -24,7 +27,7 @@ export const SignUpForm = () => {
     }) => {
         const { email, password, password2 } = values;
         if (password !== password2) {
-            setErrorMessages('Passwords do not match');
+            setErrorMessages(t('authentication.passwordsDoNotMatch'));
             return;
         }
         try {
@@ -48,28 +51,34 @@ export const SignUpForm = () => {
                         onChangeText={handleChange('email')}
                         onBlur={handleBlur('email')}
                         value={values.email}
-                        label="Email"
+                        label={t('authentication.email')}
                     />
                     <TextInput
                         onChangeText={handleChange('password')}
                         onBlur={handleBlur('password')}
                         secureTextEntry={true}
                         value={values.password}
-                        label="Password"
+                        label={t('authentication.password')}
                     />
                     <TextInput
                         onChangeText={handleChange('password2')}
                         onBlur={handleBlur('password2')}
                         secureTextEntry={true}
                         value={values.password2}
-                        label="Password"
+                        label={t('authentication.confirmPassword')}
                     />
                     {errorMessages && (
                         <ErrorMessage errorMessage={errorMessages} />
                     )}
                     <ButtonContainer>
-                        <Button onPress={handleSubmit} title="SignUp" />
-                        <Button onPress={goToLogin} title={'Login'}></Button>
+                        <Button
+                            onPress={handleSubmit}
+                            title={t('authentication.signUp')}
+                        />
+                        <Button
+                            onPress={goToLogin}
+                            title={t('authentication.login')}
+                        />
                     </ButtonContainer>
                 </FormContainer>
             )}

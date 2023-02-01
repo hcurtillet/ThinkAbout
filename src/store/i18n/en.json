@@ -1,0 +1,14 @@
+{
+    "authentication": {
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "login": "Login",
+        "logout": "Logout",
+        "signUp": "Sign up",
+        "passwordDoesNotMatch": "Password does not match",
+        "emailAlreadyExists": "Email already exists",
+        "userNotFound": "User not found",
+        "invalidPassword": "Invalid password",
+    }
+}
