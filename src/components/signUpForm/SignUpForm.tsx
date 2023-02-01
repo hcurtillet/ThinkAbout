@@ -4,8 +4,9 @@ import { Button, routes, TextInput } from '@components';
 import { FormContainer } from '@styles';
 import { RootScreenNavigationProp } from '@types';
 import styled from 'styled-components';
-import { View } from 'react-native';
+import { Alert, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import auth from '@react-native-firebase/auth';
 
 export const SignUpForm = () => {
     const navigation = useNavigation<RootScreenNavigationProp>();
@@ -14,10 +15,31 @@ export const SignUpForm = () => {
         navigation.navigate(routes.login);
     };
 
+    const onSubmit = async (values: {
+        email: string;
+        password: string;
+        password2: string;
+    }) => {
+        const { email, password, password2 } = values;
+        if (password !== password2) {
+            Alert.alert('Passwords do not match');
+            return;
+        }
+        try {
+            const res = await auth().createUserWithEmailAndPassword(
+                email,
+                password,
+            );
+            console.log('result :', res);
+        } catch (e) {
+            console.log('error :', e);
+        }
+    };
+
     return (
         <Formik
             initialValues={{ email: '', password: '', password2: '' }}
-            onSubmit={values => console.log(values)}>
+            onSubmit={onSubmit}>
             {({ handleChange, handleBlur, handleSubmit, values }) => (
                 <FormContainer>
                     <TextInput

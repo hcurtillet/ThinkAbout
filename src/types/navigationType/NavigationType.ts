@@ -8,6 +8,8 @@ export type NavigationType = {
 
 export type RootStackParamList = {
     Login: undefined;
+    Start: undefined;
+
     SignUp: undefined;
     App: undefined;
 };

@@ -2,7 +2,13 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { HomeScreen, LoginScreen, ProfileScreen, SignUpScreen } from '@screens';
+import {
+    HomeScreen,
+    LoginScreen,
+    ProfileScreen,
+    SignUpScreen,
+    StartScreen,
+} from '@screens';
 import { RootStackParamList } from '@types';
 import Icon from 'react-native-vector-icons/AntDesign';
 
@@ -18,6 +24,7 @@ export const StackNavigator = () => {
                     animation: 'none',
                     gestureEnabled: false,
                 }}>
+                <HomeStack.Screen name={routes.start} component={StartScreen} />
                 <HomeStack.Screen name={routes.login} component={LoginScreen} />
                 <HomeStack.Screen
                     name={routes.signUp}
@@ -58,9 +65,10 @@ export const AppNavigator = () => {
 };
 
 export enum routes {
-    home = 'Home',
-    profile = 'Profile',
-    login = 'Login',
-    signUp = 'SignUp',
     app = 'App',
+    home = 'Home',
+    login = 'Login',
+    profile = 'Profile',
+    signUp = 'SignUp',
+    start = 'Start',
 }
