@@ -30,7 +30,7 @@ const MyTextInput = styled(ReactTextInput)`
     border-radius: 5px;
     padding: 10px;
     width: 100%;
-    height: 50px;
+    height: 40px;
     margin-bottom: 10px;
     margin-top: 5px;
 `;

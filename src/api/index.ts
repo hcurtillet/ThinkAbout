@@ -1,2 +1,3 @@
 import { authentication } from './authentication';
-export default { authentication };
+import { tasks } from './tasks';
+export default { authentication, tasks };

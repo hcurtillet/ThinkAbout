@@ -10,5 +10,25 @@
         "emailAlreadyExists": "Email already exists",
         "userNotFound": "User not found",
         "invalidPassword": "Invalid password",
-    }
+    },
+    "home": {
+        "title": "Home",
+        "addTask": "Add Task"
+    },
+    "task": {
+        "title": "Task",
+        "name": "Name",
+        "newTask": "New Task",
+        "description": "Description",
+        "date": "Date",
+        "save": "Save",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "deleteConfirmation": "Are you sure you want to delete this task?",
+        "deleteConfirmationYes": "Yes",
+        "deleteConfirmationNo": "No",
+        "taskSaved": "Task saved",
+        "taskDeleted": "Task deleted",
+        "taskNotFound": "Task not found"
+    },
 }

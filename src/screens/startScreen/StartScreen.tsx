@@ -37,4 +37,6 @@ export const StartScreen = () => {
     } else {
         navigation.navigate(routes.app);
     }
+
+    return <></>;
 };
